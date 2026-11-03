@@ -49,3 +49,10 @@ Option chosen: **Alternativa B**, porque garantiza un desacoplamiento completo e
 ## More Information
 
 Documento redactado para la evaluación del caso práctico ConstanciaUV.
+
+### Revisión 1. Cambio en el proveedor de notificaciones
+
+* **Cambio recibido:** El proveedor externo de notificaciones modificó su interfaz de comunicación y cambió la estructura de los códigos/mensajes de error de envío.
+* **Impacto sobre la alternativa seleccionada:** El impacto se limita exclusivamente al componente independiente (worker/procesador de notificaciones) encargado de consumir los registros pendientes y realizar las llamadas HTTP. El dominio principal de generación de constancias no sufre ninguna modificación.
+* **Evaluación de la decisión:** La decisión de mantener la **Alternativa B** permanece **vigente y respaldada**. Este cambio valida la elección, demostrando que el desacoplamiento arquitectónico aisla las modificaciones del proveedor externo sin afectar el núcleo del sistema.
+* **Actualizaciones a consecuencias y comprobaciones:** Se debe actualizar la capa de integración del worker para mapear los nuevos códigos de error. Se agregará una prueba unitaria/de integración específica en el worker para validar la interpretación del nuevo formato de respuestas de error del proveedor.
